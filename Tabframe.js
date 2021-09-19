@@ -1,5 +1,5 @@
 function setup(){
-    createCanvas(windowWidth, windowHeight)
+    createCanvas(windowWidth * 0.85, windowHeight)
     lineinterval = height/60
 }
 function preload(){
@@ -15,9 +15,13 @@ $(document).ready(function() {
 	});
 });
 
+var numberofline = 7
 function draw(){
     stroke(100)
     displayfret(height/7)
+    for(j=1;j<numberofline+1;j++){
+        displayfret(j*height/7)
+    }
 }
 
 function displayfret(y){
