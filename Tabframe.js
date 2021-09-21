@@ -1,6 +1,7 @@
 function setup(){
-    createCanvas(windowWidth * 0.85, windowHeight)
-    winheight = height
+    createCanvas(windowWidth * 0.85, windowHeight*10)
+    translate(0,windowHeight/2)
+    winheight = windowHeight
     winwidth = width
     lineinterval = winheight/60
 }
@@ -17,7 +18,7 @@ $(document).ready(function() {
 	});
 });
 
-var numberofline = 7
+var numberofline = 40
 function draw(){
     stroke(100)
     for(j=1;j<numberofline+1;j++){
@@ -42,55 +43,16 @@ function displaytime(y){
 }
 
 function drawnote(y){
-    for(i=0;i<40;i++){
-        sec = i/10
-        sec = str(sec.toFixed(1))
-        numberofnote = tabs[sec].length
-        for(j=0;j<numberofnote;j++){
-            displaynote( tabs[sec][j], i/10, y)
+    for(k=0;k<40;k++){
+        for(i=40*k;i<40*(k+1);i++){
+            sec = i/10
+            sec = str(sec.toFixed(1))
+            numberofnote = tabs[sec].length
+            for(j=0;j<numberofnote;j++){
+                displaynote( tabs[sec][j], (i-40*k)/10, y+winheight*k/7)
+            }
         }
     }
-    for(i=40;i<80;i++){
-        sec = i/10
-        sec = str(sec.toFixed(1))
-        numberofnote = tabs[sec].length
-        for(j=0;j<numberofnote;j++){
-            displaynote( tabs[sec][j], (i-40)/10, y+winheight/7)
-        }
-    }
-    for(i=80;i<120;i++){
-        sec = i/10
-        sec = str(sec.toFixed(1))
-        numberofnote = tabs[sec].length
-        for(j=0;j<numberofnote;j++){
-            displaynote( tabs[sec][j], (i-80)/10, y+2* winheight/7)
-        }
-    }
-    for(i=120;i<160;i++){
-        sec = i/10
-        sec = str(sec.toFixed(1))
-        numberofnote = tabs[sec].length
-        for(j=0;j<numberofnote;j++){
-            displaynote( tabs[sec][j], (i-120)/10, y+3* winheight/7)
-        }
-    }
-    for(i=160;i<200;i++){
-        sec = i/10
-        sec = str(sec.toFixed(1))
-        numberofnote = tabs[sec].length
-        for(j=0;j<numberofnote;j++){
-            displaynote( tabs[sec][j], (i-160)/10, y+4* winheight/7)
-        }
-    }
-    for(i=200;i<240;i++){
-        sec = i/10
-        sec = str(sec.toFixed(1))
-        numberofnote = tabs[sec].length
-        for(j=0;j<numberofnote;j++){
-            displaynote( tabs[sec][j], (i-200)/10, y+5* winheight/7)
-        }
-    }
-    
 }
 
 function displaynote(note, xposition, y){
